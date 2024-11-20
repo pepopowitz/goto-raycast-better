@@ -1,3 +1,3 @@
-# goto
+# goto-raycast-better
 
-goes to things
+A Raycast wormhole extension, but better than the previous one I built for Raycast.
