@@ -1,19 +1,33 @@
 import { ActionPanel, List, Action } from "@raycast/api";
 
+const routes = [
+  {
+    code: "gh",
+    url: "https://github.com",
+  },
+  {
+    code: "google",
+    url: "https://google.com",
+  },
+];
+
 export default function Command() {
   return (
     <List>
-      <List.Item
-        icon="list-icon.png"
-        title="Stuff!"
-        actions={
-          <ActionPanel>
-            <Action.OpenInBrowser url="https://github.com" title="Things" key="gh" />
-            <Action.OpenInBrowser url="https://docs.camunda.io" title="Production" key="prod" />
-            <Action.OpenInBrowser url="https://stage.docs.camunda.io" title="Staging" key="stage" />
-          </ActionPanel>
-        }
-      />
+      {routes.map((route) => {
+        return (
+          <List.Item
+            icon="list-icon.png"
+            title={route.code}
+            key={route.code}
+            actions={
+              <ActionPanel>
+                <Action.OpenInBrowser url={route.url} title={route.code} key={route.code} />
+              </ActionPanel>
+            }
+          />
+        );
+      })}
     </List>
   );
 }

@@ -9,7 +9,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Goto something",
+      "title": "Goto!",
       "description": "Go!",
       "mode": "view"
     }
