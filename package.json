@@ -11,7 +11,21 @@
       "name": "index",
       "title": "Goto!",
       "description": "Go!",
-      "mode": "view"
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "code",
+          "type": "text",
+          "placeholder": "where you want to go today?",
+          "required": false
+        },
+        {
+          "name": "subcode",
+          "type": "text",
+          "placeholder": "who's your daddy and what does he do?",
+          "required": false
+        }
+      ]
     }
   ],
   "dependencies": {

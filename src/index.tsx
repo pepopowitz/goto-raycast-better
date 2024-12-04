@@ -11,7 +11,8 @@ const routes = [
   },
 ];
 
-export default function Command() {
+export default function Command(props) {
+  console.log(props.arguments);
   return (
     <List>
       {routes.map((route) => {
