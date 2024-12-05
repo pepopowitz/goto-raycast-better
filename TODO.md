@@ -1,5 +1,6 @@
 - [x] see some suggestions
-- [ ] suggestions are dynamically driven (by rules)
+- [x] suggestions are dynamically driven (by rules)
+- [ ] next stream: how can we make the "search box" show after I select a listitem
 - [ ] accomodate different types of rules
   - [ ] depth:1, direct link (e.g. `prod` -> docs.camunda.io)
   - [ ] depth:1, includes a param (e.g. `search x` -> google.com?q=x)

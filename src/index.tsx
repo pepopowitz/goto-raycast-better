@@ -1,4 +1,4 @@
-import { ActionPanel, List, Action } from "@raycast/api";
+import { ActionPanel, List, Action, Detail } from "@raycast/api";
 
 const routes = [
   {
@@ -23,12 +23,28 @@ export default function Command(props) {
             key={route.code}
             actions={
               <ActionPanel>
-                <Action.OpenInBrowser url={route.url} title={route.code} key={route.code} />
+                <Action.Push title="Push Pong" target={<Pong />} />
               </ActionPanel>
             }
           />
         );
       })}
+    </List>
+  );
+}
+
+function Pong() {
+  return (
+    <List>
+      <List.Item
+        icon="list-icon.png"
+        title="Windhand"
+        actions={
+          <ActionPanel>
+            <Action.OpenInBrowser url="https://google.com" title="This Is It" />
+          </ActionPanel>
+        }
+      />
     </List>
   );
 }
