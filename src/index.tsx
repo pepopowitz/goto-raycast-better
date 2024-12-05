@@ -4,10 +4,21 @@ const routes = [
   {
     code: "gh",
     url: "https://github.com",
+    routes: [
+      {
+        name: "docs",
+        url: "https://github.com/camunda/camunda-docs",
+      },
+      {
+        name: "me",
+        url: "https://github.com/pepopowitz",
+      },
+    ],
   },
   {
     code: "google",
     url: "https://google.com",
+    routes: [],
   },
 ];
 
@@ -16,18 +27,22 @@ export default function Command(props) {
   return (
     <List>
       {routes.map((route) => {
-        return (
-          <List.Item
-            icon="list-icon.png"
-            title={route.code}
-            key={route.code}
-            actions={
-              <ActionPanel>
-                <Action.Push title="Push Pong" target={<Pong />} />
-              </ActionPanel>
-            }
-          />
-        );
+        let childAction;
+        if (route.routes.length === 0) {
+          childAction = (
+            <ActionPanel>
+              <Action.OpenInBrowser url={route.url} title={route.code} />
+            </ActionPanel>
+          );
+        } else {
+          childAction = (
+            <ActionPanel>
+              <Action.Push title="Push Pong" target={<Pong />} />
+            </ActionPanel>
+          );
+        }
+
+        return <List.Item icon="list-icon.png" title={route.code} key={route.code} actions={childAction} />;
       })}
     </List>
   );
