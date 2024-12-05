@@ -1,6 +1,9 @@
 - [x] see some suggestions
 - [x] suggestions are dynamically driven (by rules)
-- [ ] next stream: how can we make the "search box" show after I select a listitem
+- [x] next stream: how can we make the "search box" show af ter I select a listitem
+- [ ] next stream:
+  - [ ] refactor! we scrambled pretty hard at the end, I bet we can make things better.
+  - [ ] translate the urlMap from the previous iteration of goto into nested Lists
 - [ ] accomodate different types of rules
   - [ ] depth:1, direct link (e.g. `prod` -> docs.camunda.io)
   - [ ] depth:1, includes a param (e.g. `search x` -> google.com?q=x)
@@ -16,3 +19,14 @@
 * import/export rules
   - or sync rules via raycast pro?
   - sync rules via something else like git?
+
+# jon's thoughts
+
+- are `gh` and `google` each their own command?
+  - I think of this as the least favorable workaround
+- can we list `gh docs` `gh me` `gh docs pulls` all those things as ListItems?
+  - This feels better than the one above, but cluttered/noisy
+  - what about wildcards?
+    - `gh me goto-raycast-better` -- I don't want to define every single repo in my org
+    - I want to be able to just audible something
+- can `gh` open a new list, of `docs` and `me`?
