@@ -37,7 +37,7 @@ export default function Command(props) {
         } else {
           childAction = (
             <ActionPanel>
-              <Action.Push title="Push Pong" target={<Pong />} />
+              <Action.Push title={route.code} target={<ChildActions routes={route.routes} />} />
             </ActionPanel>
           );
         }
@@ -48,18 +48,22 @@ export default function Command(props) {
   );
 }
 
-function Pong() {
+function ChildActions({ routes }) {
   return (
     <List>
-      <List.Item
-        icon="list-icon.png"
-        title="Windhand"
-        actions={
-          <ActionPanel>
-            <Action.OpenInBrowser url="https://google.com" title="This Is It" />
-          </ActionPanel>
-        }
-      />
+      {routes.map((route) => {
+        return (
+          <List.Item
+            icon="list-icon.png"
+            title={route.name}
+            actions={
+              <ActionPanel>
+                <Action.OpenInBrowser url={route.url} title={route.name} />
+              </ActionPanel>
+            }
+          />
+        );
+      })}
     </List>
   );
 }
