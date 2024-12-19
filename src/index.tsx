@@ -1,6 +1,15 @@
+import { Route, routes } from "./routes";
 import { ActionPanel, List, Action } from "@raycast/api";
 
 export default function Command() {
+  return <ChildActions routes={routes} />;
+}
+
+interface ChildActionsProps {
+  routes: Array<Route>;
+}
+
+function ChildActions({ routes }: ChildActionsProps) {
   return (
     <List>
       {routes.map((route) => {
@@ -20,30 +29,6 @@ export default function Command() {
         }
 
         return <List.Item icon="list-icon.png" title={route.name} key={route.name} actions={childAction} />;
-      })}
-    </List>
-  );
-}
-
-interface ChildActionsProps {
-  routes: Array<Route>;
-}
-
-function ChildActions({ routes }: ChildActionsProps) {
-  return (
-    <List>
-      {routes.map((route) => {
-        return (
-          <List.Item
-            icon="list-icon.png"
-            title={route.name}
-            actions={
-              <ActionPanel>
-                <Action.OpenInBrowser url={route.url} title={route.name} />
-              </ActionPanel>
-            }
-          />
-        );
       })}
     </List>
   );
