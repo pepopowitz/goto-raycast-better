@@ -9,23 +9,36 @@ export function RouteList({ routes }: RouteListProps) {
   return (
     <List>
       {routes.map((route) => {
-        let childAction;
         if (route.routes.length === 0) {
-          childAction = (
-            <ActionPanel>
-              <Action.OpenInBrowser url={route.url} title={route.name} />
-            </ActionPanel>
-          );
+          return <LeafListItem route={route} key={route.name} />;
         } else {
-          childAction = (
-            <ActionPanel>
-              <Action.Push title={route.name} target={<RouteList routes={route.routes} />} />
-            </ActionPanel>
-          );
+          return <BranchListItem route={route} key={route.name} />;
         }
-
-        return <List.Item icon="list-icon.png" title={route.name} key={route.name} actions={childAction} />;
       })}
     </List>
   );
+}
+
+interface RouteListItemProps {
+  route: Route;
+}
+
+function BranchListItem({ route }: RouteListItemProps) {
+  const childAction = (
+    <ActionPanel>
+      <Action.Push title={route.name} target={<RouteList routes={route.routes} />} />
+    </ActionPanel>
+  );
+
+  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+}
+
+function LeafListItem({ route }: RouteListItemProps) {
+  const childAction = (
+    <ActionPanel>
+      <Action.OpenInBrowser url={route.url} title={route.name} />
+    </ActionPanel>
+  );
+
+  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
 }
