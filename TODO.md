@@ -1,8 +1,9 @@
 - [x] see some suggestions
 - [x] suggestions are dynamically driven (by rules)
 - [x] next stream: how can we make the "search box" show af ter I select a listitem
+- [x] refactor! we scrambled pretty hard at the end, I bet we can make thingsure better.
 - [ ] next stream:
-  - [ ] refactor! we scrambled pretty hard at the end, I bet we can make things better.
+  - [x] rename previous stream to be about refactorein
   - [ ] translate the urlMap from the previous iteration of goto into nested Lists
 - [ ] accomodate different types of rules
   - [ ] depth:1, direct link (e.g. `prod` -> docs.camunda.io)

@@ -12,7 +12,20 @@ export const routes: Array<Route> = [
       {
         name: "docs",
         url: "https://github.com/camunda/camunda-docs",
-        routes: [],
+        routes: [
+          {
+            // gh docs issues
+            // gh docs pull/123
+            name: "*",
+            url: "https://github.com/camunda/camunda-docs/${0}",
+            routes: [],
+          },
+          {
+            name: "pulls",
+            url: "https://github.com/camunda/camunda-docs/pulls",
+            routes: [],
+          },
+        ],
       },
       {
         name: "me",
