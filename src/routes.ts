@@ -6,7 +6,7 @@ export interface Route {
 
 export const routes: Array<Route> = [
   {
-    name: "gh",
+    name: "gh (GitHub)",
     url: "https://github.com",
     routes: [
       {
