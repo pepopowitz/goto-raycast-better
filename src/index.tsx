@@ -2,14 +2,23 @@
 import { useEffect, useState } from "react";
 import { RouteList } from "./RouteList";
 import { getRoutes, Route } from "./routes";
+import { showToast, Toast } from "@raycast/api";
 
 export default function Command() {
   const [routes, setRoutes] = useState<Array<Route>>([]);
 
   useEffect(() => {
     async function fetchRoutes() {
-      const routes = await getRoutes();
-      setRoutes(routes);
+      try {
+        const routes = await getRoutes();
+        setRoutes(routes);
+      } catch (error) {
+        await showToast({
+          title: "Failed to reload routes.",
+          style: Toast.Style.Failure,
+          message: error as string,
+        });
+      }
     }
     fetchRoutes();
   }, []);
