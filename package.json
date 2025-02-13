@@ -12,6 +12,23 @@
       "title": "Goto!",
       "description": "Go!",
       "mode": "view"
+    },
+    {
+      "name": "reload",
+      "title": "Reload configuration",
+      "description": "Reload the configuration file",
+      "mode": "no-view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "goto_path",
+      "title": "Path to .goto.json file",
+      "label": "Path to .goto.json file",
+      "description": "Path to the .goto.json file",
+      "type": "textfield",
+      "required": true,
+      "default": "~/.goto.json"
     }
   ],
   "dependencies": {
