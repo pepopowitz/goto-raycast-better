@@ -37,6 +37,17 @@ export const routes: Array<Route> = [
   {
     name: "google",
     url: "https://google.com",
-    routes: [],
+    routes: [
+      {
+        name: "*",
+        url: "https://google.com?q=${0}",
+        routes: [],
+      },
+      {
+        name: "google",
+        url: "https://google.com",
+        routes: [],
+      },
+    ],
   },
 ];

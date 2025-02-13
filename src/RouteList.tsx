@@ -63,8 +63,6 @@ function WildcardForm({ route }: RouteListItemProps) {
   }
 
   async function handleSubmit(values: Values) {
-    console.log(route, values);
-    console.log(route.url.replace("${0}", values.name));
     await open(route.url.replace("${0}", values.name));
   }
 
