@@ -12,6 +12,12 @@
       "title": "Goto!",
       "description": "Go!",
       "mode": "view"
+    },
+    {
+      "name": "reload",
+      "title": "Reload configuration",
+      "description": "Reload the configuration file",
+      "mode": "no-view"
     }
   ],
   "preferences": [
