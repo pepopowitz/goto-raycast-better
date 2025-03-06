@@ -11,7 +11,7 @@ export function RouteList({ routes }: RouteListProps) {
       {routes.map((route) => {
         if (route.routes.length === 0) {
           if (route.name === "*") {
-            return <WildcardBranchListItem route={route} key={route.name} />;
+            return <WildcardListItem route={route} key={route.name} />;
           } else {
             return <LeafListItem route={route} key={route.name} />;
           }
@@ -34,7 +34,7 @@ function BranchListItem({ route }: RouteListItemProps) {
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="branch.png" title={route.name} actions={childAction} />;
 }
 
 function LeafListItem({ route }: RouteListItemProps) {
@@ -44,17 +44,17 @@ function LeafListItem({ route }: RouteListItemProps) {
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="leaf.png" title={route.name} actions={childAction} />;
 }
 
-function WildcardBranchListItem({ route }: RouteListItemProps) {
+function WildcardListItem({ route }: RouteListItemProps) {
   const childAction = (
     <ActionPanel>
       <Action.Push title={route.name} target={<WildcardForm route={route} />} />
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="leaf.png" title={route.name} actions={childAction} />;
 }
 
 function WildcardForm({ route }: RouteListItemProps) {
