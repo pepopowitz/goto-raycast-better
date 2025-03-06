@@ -1,5 +1,6 @@
 import { Route } from "./routes";
 import { ActionPanel, List, Action, Form, open } from "@raycast/api";
+import { useState } from "react";
 
 interface RouteListProps {
   routes: Array<Route>;
@@ -58,12 +59,14 @@ function WildcardListItem({ route }: RouteListItemProps) {
 }
 
 function WildcardForm({ route }: RouteListItemProps) {
-  interface Values {
-    name: string;
+  const [name, setName] = useState<string>("");
+
+  function generateUrl() {
+    return route.url.replace("${0}", name);
   }
 
-  async function handleSubmit(values: Values) {
-    await open(route.url.replace("${0}", values.name));
+  async function handleSubmit() {
+    await open(generateUrl());
   }
 
   return (
@@ -74,7 +77,22 @@ function WildcardForm({ route }: RouteListItemProps) {
         </ActionPanel>
       }
     >
-      <Form.TextField id="name" defaultValue="issues" />
+      <Form.TextField id="name" value={name} onChange={setName} />
+      <Form.Description text={generateUrl()} />
+    </Form>
+  );
+}
+
+export default function Command() {
+  return (
+    <Form
+      actions={
+        <ActionPanel>
+          <Action.SubmitForm title="Submit Name" onSubmit={(values) => console.log(values)} />
+        </ActionPanel>
+      }
+    >
+      <Form.TextField id="name" value={name} onChange={setName} />
     </Form>
   );
 }
