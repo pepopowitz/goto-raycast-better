@@ -16,9 +16,10 @@
 
 ## next stream
 
-- [ ] Leaves and branches should have different icons!
-- [ ] When filling in a wildcard, it would be nice to see what the target URL is going to resolve to.
-- [ ] Can we change the keybinding for submitting the wildcard form from cmd-enter to enter?
+- [x] Leaves and branches should have different icons!
+  - [x] async: find better icons
+- [x] When filling in a wildcard, it would be nice to see what the target URL is going to resolve to.
+- [x] Can we change the keybinding for submitting the wildcard form from cmd-enter to enter?
 - [ ] `routes: []` shouldn't be required for leaves, it makes the config noisy.
 
 ## futures
