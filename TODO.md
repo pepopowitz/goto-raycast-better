@@ -10,16 +10,19 @@
   - [x] depth:2, includes a param (e.g. `gh camunda-docs` -> github.com/camunda/camunda-docs)
   - [x] depth:3, includes a param (e.g. `gh docs pulls` -> github.com/camunda/camunda-docs/pulls)
 - [x] wildcards
+- [x] refactor wildcards
+  - [x] where should asterisk live?
+  - [x] better naming for wildcard components?
+- [x] add rules through raycast settings
+- [x] async: translate the urlMap from the previous iteration of goto into nested Lists
+- [x] pseudonym/long name for each item
 - [ ] next stream:
-  - [ ] refactor wildcards
-    - [ ] where should asterisk live?
-    - [ ] better naming for wildcard components?
-  - [ ] add rules through raycast settings
-  - [ ] reset to top of tree instead of retaining state
-- [ ] pseudonym/long name for each item
+  - [ ] different icons for leaves vs branches
+  - [ ] show wildcard pattern on wildcard form
+  - [ ] change keybinding for submitting the wildcard form to just enter?
+  - [ ] reset to top of tree instead of retaining state?
+    - doesn't seem to happen when running a built version
 - [ ] a node can be both a branch and a leaf (example: gh me)
-- [ ] double wildcards
-- [ ] async: translate the urlMap from the previous iteration of goto into nested Lists
 
 * see my most common submissions
 * see my most recent submissions
@@ -29,14 +32,3 @@
 * import/export rules
   - or sync rules via raycast pro?
   - sync rules via something else like git?
-
-# jon's thoughts
-
-- are `gh` and `google` each their own command?
-  - I think of this as the least favorable workaround
-- can we list `gh docs` `gh me` `gh docs pulls` all those things as ListItems?
-  - This feels better than the one above, but cluttered/noisy
-  - what about wildcards?
-    - `gh me goto-raycast-better` -- I don't want to define every single repo in my org
-    - I want to be able to just audible something
-- can `gh` open a new list, of `docs` and `me`?
