@@ -1,5 +1,5 @@
 import { Route } from "./routes";
-import { ActionPanel, List, Action, Form, open } from "@raycast/api";
+import { ActionPanel, List, Action, Form, open, popToRoot } from "@raycast/api";
 import { useState } from "react";
 
 interface RouteListProps {
@@ -41,7 +41,7 @@ function BranchListItem({ route }: RouteListItemProps) {
 function LeafListItem({ route }: RouteListItemProps) {
   const childAction = (
     <ActionPanel>
-      <Action.OpenInBrowser url={route.url} title={route.name} />
+      <Action.OpenInBrowser url={route.url} title={route.name} onOpen={() => popToRoot()} />
     </ActionPanel>
   );
 
@@ -67,6 +67,7 @@ function WildcardForm({ route }: RouteListItemProps) {
 
   async function handleSubmit() {
     await open(generateUrl());
+    await popToRoot();
   }
 
   return (
