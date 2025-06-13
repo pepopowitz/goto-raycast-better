@@ -82,17 +82,3 @@ function WildcardForm({ route }: RouteListItemProps) {
     </Form>
   );
 }
-
-export default function Command() {
-  return (
-    <Form
-      actions={
-        <ActionPanel>
-          <Action.SubmitForm title="Submit Name" onSubmit={(values) => console.log(values)} />
-        </ActionPanel>
-      }
-    >
-      <Form.TextField id="name" value={name} onChange={setName} />
-    </Form>
-  );
-}
