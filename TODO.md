@@ -10,25 +10,20 @@
   - [x] depth:2, includes a param (e.g. `gh camunda-docs` -> github.com/camunda/camunda-docs)
   - [x] depth:3, includes a param (e.g. `gh docs pulls` -> github.com/camunda/camunda-docs/pulls)
 - [x] wildcards
-- [x] refactor wildcards
-  - [x] where should asterisk live?
-  - [x] better naming for wildcard components?
 - [x] add rules through raycast settings
+- [x] reset to top of tree instead of retaining state
 - [x] async: translate the urlMap from the previous iteration of goto into nested Lists
-- [x] pseudonym/long name for each item
-- [ ] next stream:
-  - [ ] different icons for leaves vs branches
-  - [ ] show wildcard pattern on wildcard form
-  - [ ] change keybinding for submitting the wildcard form to just enter?
-  - [ ] reset to top of tree instead of retaining state?
-    - doesn't seem to happen when running a built version
-- [ ] a node can be both a branch and a leaf (example: gh me)
 
-* see my most common submissions
-* see my most recent submissions
-* autocomplete (is this done?) (yes!)
-* add rules through raycast
-* view rules
-* import/export rules
-  - or sync rules via raycast pro?
-  - sync rules via something else like git?
+## next stream
+
+- [x] Leaves and branches should have different icons!
+  - [x] async: find better icons
+- [x] When filling in a wildcard, it would be nice to see what the target URL is going to resolve to.
+- [x] Can we change the keybinding for submitting the wildcard form from cmd-enter to enter?
+- [ ] `routes: []` shouldn't be required for leaves, it makes the config noisy.
+
+## futures
+
+- a node can be both a branch and a leaf (example: gh me)
+- see my most common submissions
+- see my most recent submissions

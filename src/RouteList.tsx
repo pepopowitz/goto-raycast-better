@@ -1,5 +1,6 @@
 import { Route } from "./routes";
 import { ActionPanel, List, Action, Form, open } from "@raycast/api";
+import { useState } from "react";
 
 interface RouteListProps {
   routes: Array<Route>;
@@ -11,7 +12,7 @@ export function RouteList({ routes }: RouteListProps) {
       {routes.map((route) => {
         if (route.routes.length === 0) {
           if (route.name === "*") {
-            return <WildcardBranchListItem route={route} key={route.name} />;
+            return <WildcardListItem route={route} key={route.name} />;
           } else {
             return <LeafListItem route={route} key={route.name} />;
           }
@@ -34,7 +35,7 @@ function BranchListItem({ route }: RouteListItemProps) {
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="branch.png" title={route.name} actions={childAction} />;
 }
 
 function LeafListItem({ route }: RouteListItemProps) {
@@ -44,26 +45,28 @@ function LeafListItem({ route }: RouteListItemProps) {
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="leaf.png" title={route.name} actions={childAction} />;
 }
 
-function WildcardBranchListItem({ route }: RouteListItemProps) {
+function WildcardListItem({ route }: RouteListItemProps) {
   const childAction = (
     <ActionPanel>
       <Action.Push title={route.name} target={<WildcardForm route={route} />} />
     </ActionPanel>
   );
 
-  return <List.Item icon="list-icon.png" title={route.name} actions={childAction} />;
+  return <List.Item icon="leaf.png" title={route.name} actions={childAction} />;
 }
 
 function WildcardForm({ route }: RouteListItemProps) {
-  interface Values {
-    name: string;
+  const [name, setName] = useState<string>("");
+
+  function generateUrl() {
+    return route.url.replace("${0}", name);
   }
 
-  async function handleSubmit(values: Values) {
-    await open(route.url.replace("${0}", values.name));
+  async function handleSubmit() {
+    await open(generateUrl());
   }
 
   return (
@@ -74,7 +77,22 @@ function WildcardForm({ route }: RouteListItemProps) {
         </ActionPanel>
       }
     >
-      <Form.TextField id="name" defaultValue="issues" />
+      <Form.TextField id="name" value={name} onChange={setName} />
+      <Form.Description text={generateUrl()} />
+    </Form>
+  );
+}
+
+export default function Command() {
+  return (
+    <Form
+      actions={
+        <ActionPanel>
+          <Action.SubmitForm title="Submit Name" onSubmit={(values) => console.log(values)} />
+        </ActionPanel>
+      }
+    >
+      <Form.TextField id="name" value={name} onChange={setName} />
     </Form>
   );
 }
